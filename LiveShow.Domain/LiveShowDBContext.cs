@@ -36,6 +36,7 @@ namespace LiveShow.Domain
                 e.Property(x => x.Id).ValueGeneratedOnAdd();
                 //e.Property(x => x.Id).ValueGeneratedOnAdd().UseMySqlIdentityColumn();
                 e.Property(x => x.TimeStamp).IsRowVersion();
+                e.HasOne(x => x.Role).WithMany(y => y.Users).HasForeignKey(x => x.RoleId);
             });
 
             modelBuilder.Entity<Role>(e =>
@@ -59,9 +60,17 @@ namespace LiveShow.Domain
             modelBuilder.Entity<ShowRoomVlewer>(e =>
             {
                 e.ToTable("ShowRoomUser");
-                e.HasKey(x => x.Id);
-                e.Property(x => x.Id).ValueGeneratedOnAdd();
+                //e.HasKey(x => x.Id);
+                //e.Property(x => x.Id).ValueGeneratedOnAdd();
                 //e.Property(x => x.Id).ValueGeneratedOnAdd().UseMySqlIdentityColumn();
+                e.HasKey(x => new
+                {
+                    x.UserId
+                ,
+                    x.ShowRoomId
+                });
+                e.HasOne(x => x.ShowRoom).WithMany(y => y.ShowRoomVlewers).HasForeignKey(x => x.ShowRoomId);
+                e.HasOne(x => x.User).WithMany(y => y.ShowRoomVlewer).HasForeignKey(x => x.UserId);
                 e.Property(x => x.TimeStamp).IsRowVersion();
             });
         }

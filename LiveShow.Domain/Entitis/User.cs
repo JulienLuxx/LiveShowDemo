@@ -28,8 +28,10 @@ namespace LiveShow.Domain.Entitis
 
         public int RoleId { get; set; }
 
-        public int? ShowRoomId { get; set; }
+        //public int? ShowRoomId { get; set; }
 
         public virtual Role Role { get; set; }
+
+        public virtual ICollection<ShowRoomVlewer> ShowRoomVlewer { get; set; }
     }
 }

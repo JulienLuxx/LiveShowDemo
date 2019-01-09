@@ -6,7 +6,7 @@ namespace LiveShow.Domain.Entitis
 {
     public class ShowRoomVlewer
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public DateTime CreateTime { get; set; }
 

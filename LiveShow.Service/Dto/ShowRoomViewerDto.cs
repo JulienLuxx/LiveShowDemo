@@ -5,10 +5,12 @@ using System.Text;
 
 namespace LiveShow.Service.Dto
 {
-    public class ShowRoomViewerDto:BaseDto
+    public class ShowRoomViewerDto/*:BaseDto*/
     {
         public int? ShowRoomId { get; set; }
 
         public int? UserId { get; set; }
+
+        public DateTime CreateTime { get; set; }
     }
 }
