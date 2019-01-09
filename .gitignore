@@ -8,3 +8,8 @@
 /LiveShow.Domain/obj
 /LiveShow.Service/obj
 /Web/LiveShow.Web/obj
+/LiveShow.Core/bin/Debug/netcoreapp2.2
+/LiveShow.Domain/bin/Debug/netcoreapp2.2
+/LiveShow.Service/bin/Debug/netcoreapp2.2
+/Web/LiveShow.Web/bin/Debug/netcoreapp2.2
+/.vs/LiveShow/v15
