@@ -174,11 +174,17 @@ namespace LiveShow.Service.Impl
             return result;
         }
 
-        public async Task<ResultDto<ShowRoomDto>> GetSingleDataAsync(int id)
+        public async Task<ResultDto<ShowRoomDto>> GetSingleDataByUserIdAsync(int userId)
         {
             var result = new ResultDto<ShowRoomDto>();
             try
-            { }
+            {
+                var data = await _liveShowDB.ShowRoom.Include(x => x.ShowRoomVlewers).Where(x => !x.IsDeleted && x.ShowRoomVlewers.Where(y => y.UserId == userId).Any()).FirstOrDefaultAsync();
+                var dto = _mapper.Map<ShowRoomDto>(data);
+                result.ActionResult = true;
+                result.Message = "Success";
+                result.Data = dto;
+            }
             catch (Exception ex)
             {
                 result.Message = ex.Message;
@@ -216,5 +222,7 @@ namespace LiveShow.Service.Impl
             }
             return result;
         }
+
+
     }
 }

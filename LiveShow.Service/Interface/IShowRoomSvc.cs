@@ -16,6 +16,8 @@ namespace LiveShow.Service.Interface
 
         Task<ResultDto<ShowRoomDto>> GetPageDataAsync(ShowRoomQueryModel qModel);
 
+        Task<ResultDto<ShowRoomDto>> GetSingleDataByUserIdAsync(int userId);
+
         Task<ResultDto> Shutdown(int id);
     }
 }
