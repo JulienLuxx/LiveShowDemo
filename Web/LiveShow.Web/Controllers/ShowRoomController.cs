@@ -36,7 +36,7 @@ namespace LiveShow.Web.Controllers
         [HttpPost("Page")]
         public async Task<JsonResult> GetPageAsync(ShowRoomQueryModel qModel)
         {
-            var resultTask = _showRoomSvc.GetPageDataAsync(id);
+            var resultTask = _showRoomSvc.GetPageDataAsync(qModel);
             return Json(await resultTask);
         }
 
