@@ -9,12 +9,13 @@ using LiveShow.Domain;
 using LiveShow.Domain.Entitis;
 using LiveShow.Domain.Enum;
 using LiveShow.Service.Dto;
+using LiveShow.Service.Interface;
 using LiveShow.Service.QueryModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace LiveShow.Service.Impl
 {
-    public class ShowRoomSvc : BaseSvc
+    public class ShowRoomSvc : BaseSvc, IShowRoomSvc 
     {
         public ShowRoomSvc(
             IMapper mapper, 
@@ -30,7 +31,7 @@ namespace LiveShow.Service.Impl
             {
                 dto.SetDefaultValue();
                 var data = _mapper.Map<ShowRoom>(dto);
-                //data.Disable();
+                data.Disable();
                 _liveShowDB.Add(data);
                 var flag = _liveShowDB.SaveChanges();
                 if (flag > 0)
@@ -55,11 +56,11 @@ namespace LiveShow.Service.Impl
                 {
                     return result;
                 }
-                //if (await _liveShowDB.ShowRoom.AsNoTracking().Include(x=>x.ShowRoomVlewers).Where(x => x.ShowRoomVlewers.Count >= 10000&&x.Id==dto.ShowRoomId).AnyAsync())
-                //{
-                //    result.Message = "Over Size";
-                //    return result;
-                //}
+                if (await _liveShowDB.ShowRoom.AsNoTracking().Include(x => x.ShowRoomVlewers).Where(x => x.ShowRoomVlewers.Count >= 10000 && x.Id == dto.ShowRoomId).AnyAsync())
+                {
+                    result.Message = "Over Size";
+                    return result;
+                }
                 var viewerData = await _liveShowDB.ShowRoomViewer.Where(x => x.UserId == dto.UserId).FirstOrDefaultAsync();
                 if (null==viewerData)
                 {
@@ -114,25 +115,23 @@ namespace LiveShow.Service.Impl
             return result;
         }
 
-        public async Task<ResultDto> Activate(int userId)
+        public async Task<ResultDto> Activate(int id)
         {
             var result = new ResultDto();
-            if (userId < 1)
-            {
-                return result;
-            }
             try
             {
-                var data = await _liveShowDB.ShowRoom.Where(x => !x.IsDeleted && /*x.UserId == userId &&*/ x.Status == ShowRoomStatusEnum.Disable.GetHashCode()).FirstOrDefaultAsync();
+                var data = await _liveShowDB.ShowRoom.Where(x => !x.IsDeleted && x.Id == id && x.Status == ShowRoomStatusEnum.Disable.GetHashCode()).FirstOrDefaultAsync();
                 if (null == data)
                 {
+                    result.Message = "Not Found";
                     return result;
                 }
                 if (ShowRoomStatusEnum.Ban.GetHashCode() == data.Status)
                 {
+                    result.Message = "This Room has been ban";
                     return result;
                 }
-                //data.Activate();
+                data.Activate();
                 var flag= _liveShowDB.SaveChanges();
                 if (flag > 0)
                 {
@@ -175,25 +174,35 @@ namespace LiveShow.Service.Impl
             return result;
         }
 
-        public async Task<ResultDto> Shutdown(int userId)
+        public async Task<ResultDto<ShowRoomDto>> GetSingleDataAsync(int id)
+        {
+            var result = new ResultDto<ShowRoomDto>();
+            try
+            { }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public async Task<ResultDto> Shutdown(int id)
         {
             var result = new ResultDto();
-            if (userId < 1)
-            {
-                return result;
-            }
             try
             {
-                var data = await _liveShowDB.ShowRoom.Where(x => !x.IsDeleted && /*x.UserId == userId &&*/ x.Status == ShowRoomStatusEnum.Activate.GetHashCode())/*.Include(x => x.ShowRoomVlewers)*/.FirstOrDefaultAsync();
+                var data = await _liveShowDB.ShowRoom.Where(x => !x.IsDeleted && x.Id == id && x.Status == ShowRoomStatusEnum.Activate.GetHashCode()).Include(x => x.ShowRoomVlewers).FirstOrDefaultAsync();
                 if (null == data)
                 {
+                    result.Message = "Not Found";
                     return result;
                 }
                 if (ShowRoomStatusEnum.Ban.GetHashCode() == data.Status)
                 {
+                    result.Message = "This Room has been ban";
                     return result;
                 }
-                //data.Disable();
+                data.Disable();
                 var flag = _liveShowDB.SaveChanges();
                 if (flag > 0)
                 {

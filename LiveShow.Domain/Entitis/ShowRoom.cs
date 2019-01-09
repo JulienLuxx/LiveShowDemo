@@ -9,7 +9,7 @@ namespace LiveShow.Domain.Entitis
     {
         public ShowRoom()
         {
-            //ShowRoomVlewers = new HashSet<ShowRoomVlewer>();
+            ShowRoomVlewers = new HashSet<ShowRoomVlewer>();
         }
 
         public int Id { get; set; }
@@ -32,21 +32,21 @@ namespace LiveShow.Domain.Entitis
 
         //public virtual User User { get; set; }
 
-        //public virtual ICollection<ShowRoomVlewer> ShowRoomVlewers { get; set; }
+        public virtual ICollection<ShowRoomVlewer> ShowRoomVlewers { get; set; }
 
-        //public virtual void Activate()
-        //{
-        //    LastActivateTime = DateTime.Now;
-        //    Status = ShowRoomStatusEnum.Activate.GetHashCode();
-        //}
+        public virtual void Activate()
+        {
+            LastActivateTime = DateTime.Now;
+            Status = ShowRoomStatusEnum.Activate.GetHashCode();
+        }
 
-        //public virtual void Disable()
-        //{
-        //    Status = ShowRoomStatusEnum.Disable.GetHashCode();
-        //    if (ShowRoomVlewers.Count > 0)
-        //    {
-        //        ShowRoomVlewers.Clear();
-        //    }
-        //}
+        public virtual void Disable()
+        {
+            Status = ShowRoomStatusEnum.Disable.GetHashCode();
+            if (ShowRoomVlewers.Count > 0)
+            {
+                ShowRoomVlewers.Clear();
+            }
+        }
     }
 }

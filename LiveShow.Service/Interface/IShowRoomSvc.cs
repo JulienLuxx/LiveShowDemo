@@ -12,14 +12,10 @@ namespace LiveShow.Service.Interface
     {
         ResultDto Add(ShowRoomDto dto);
 
-        Task<ResultDto> AddViewer(ShowRoomViewerDto dto);
-
-        Task<ResultDto> RemoveViewer(ShowRoomViewerDto dto);
-
-        Task<ResultDto> Activate(int userId);
+        Task<ResultDto> Activate(int id);
 
         Task<ResultDto<ShowRoomDto>> GetPageDataAsync(ShowRoomQueryModel qModel);
 
-        Task<ResultDto> Shutdown(int userId);
+        Task<ResultDto> Shutdown(int id);
     }
 }
