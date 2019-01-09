@@ -3,3 +3,8 @@
 ################################################################################
 
 /LiveShow.Core/obj/Debug/netcoreapp2.2
+/.vs/LiveShow/v15/Server/sqlite3
+/LiveShow.Core/obj
+/LiveShow.Domain/obj
+/LiveShow.Service/obj
+/Web/LiveShow.Web/obj
