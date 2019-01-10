@@ -31,5 +31,12 @@ namespace LiveShow.Web.Controllers
             var resultTask = _showRoomViewerSvc.Remove(dto);
             return Json(await resultTask);
         }
+
+        [HttpPost("List")]
+        public async Task<JsonResult> GetList()
+        {
+            var resultTask = _showRoomViewerSvc.GetList();
+            return Json(await resultTask);
+        }
     }
 }

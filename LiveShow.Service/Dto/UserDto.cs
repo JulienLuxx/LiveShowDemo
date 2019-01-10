@@ -16,6 +16,8 @@ namespace LiveShow.Service.Dto
         public string Mobile { get; set; }
 
         public int Status { get; set; }
+
+        public int RoleId { get; set; }
     }
 
     public class RegisterDto
@@ -27,6 +29,8 @@ namespace LiveShow.Service.Dto
         public string Mobile { get; set; }
 
         public string MailBox { get; set; }
+
+        public int RoleId { get; set; }
     }
 
     public class LoginDto

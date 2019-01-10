@@ -12,5 +12,7 @@ namespace LiveShow.Service.Interface
         Task<ResultDto> Add(ShowRoomViewerDto dto);
 
         Task<ResultDto> Remove(ShowRoomViewerDto dto);
+
+        Task<ResultDto<ShowRoomViewerDto>> GetList();
     }
 }

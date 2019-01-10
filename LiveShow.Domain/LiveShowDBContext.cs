@@ -59,7 +59,7 @@ namespace LiveShow.Domain
 
             modelBuilder.Entity<ShowRoomVlewer>(e =>
             {
-                e.ToTable("ShowRoomUser");
+                e.ToTable("ShowRoomVlewer");
                 //e.HasKey(x => x.Id);
                 //e.Property(x => x.Id).ValueGeneratedOnAdd();
                 //e.Property(x => x.Id).ValueGeneratedOnAdd().UseMySqlIdentityColumn();
@@ -70,7 +70,7 @@ namespace LiveShow.Domain
                     x.ShowRoomId
                 });
                 e.HasOne(x => x.ShowRoom).WithMany(y => y.ShowRoomVlewers).HasForeignKey(x => x.ShowRoomId);
-                e.HasOne(x => x.User).WithMany(y => y.ShowRoomVlewer).HasForeignKey(x => x.UserId);
+                e.HasOne(x => x.User).WithMany(y => y.ShowRoomVlewers).HasForeignKey(x => x.UserId);
                 e.Property(x => x.TimeStamp).IsRowVersion();
             });
         }

@@ -153,6 +153,7 @@ namespace LiveShow.Service.Impl
                     result.Message = "MailBox already exist!";
                     return result;
                 }
+                dto.RoleId =await _liveShowDB.Role.Where(x => !x.IsDeleted && x.Name.Equals("user")).Select(s => s.Id).FirstOrDefaultAsync();
                 var userDto = _mapper.Map<UserDto>(dto);
                 result = Add(userDto);
             }

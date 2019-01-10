@@ -26,6 +26,7 @@ namespace LiveShow.Service.Impl
         public async Task<ResultDto> Add(ShowRoomViewerDto dto)
         {
             var result = new ResultDto();
+            dto.CreateTime = DateTime.Now;
             try
             {
                 if (await _liveShowDB.ShowRoom.AsNoTracking().Where(x => (x.IsDeleted || (x.Status == ShowRoomStatusEnum.Ban.GetHashCode() || x.Status == ShowRoomStatusEnum.Disable.GetHashCode())) && x.Id == dto.UserId).AnyAsync())
@@ -40,17 +41,23 @@ namespace LiveShow.Service.Impl
                 var data = await _liveShowDB.ShowRoomViewer.Where(x => x.UserId == dto.UserId).FirstOrDefaultAsync();
                 if (null == data)
                 {
-                    if (await _liveShowDB.ShowRoomViewer.AsNoTracking().Where(x => x.UserId == dto.UserId && x.ShowRoomId == dto.ShowRoomId).AnyAsync())
-                        _liveShowDB.ShowRoomViewer.Add(new ShowRoomVlewer()
-                        {
-                            ShowRoomId = dto.ShowRoomId,
-                            UserId = dto.UserId
-                        });
+                    //if (!await _liveShowDB.ShowRoomViewer.AsNoTracking().Where(x => x.UserId == dto.UserId && x.ShowRoomId == dto.ShowRoomId).AnyAsync())
+                    _liveShowDB.ShowRoomViewer.Add(new ShowRoomVlewer()
+                    {
+                        ShowRoomId = dto.ShowRoomId,
+                        UserId = dto.UserId
+                    });
                 }
-                else
+                else if (data.ShowRoomId != dto.ShowRoomId) 
                 {
-                    data.ShowRoomId = dto.ShowRoomId;
-                    _liveShowDB.ShowRoomViewer.Update(data);
+                    _liveShowDB.Remove(data);
+                    _liveShowDB.ShowRoomViewer.Add(new ShowRoomVlewer()
+                    {
+                        ShowRoomId = dto.ShowRoomId,
+                        UserId = dto.UserId
+                    });
+                    //data.ShowRoomId = dto.ShowRoomId;
+                    //_liveShowDB.ShowRoomViewer.Update(data);
                 }
                 var flag = _liveShowDB.SaveChanges();
                 //if (flag > 0)
@@ -83,6 +90,24 @@ namespace LiveShow.Service.Impl
                     result.ActionResult = true;
                     result.Message = "Success";
                 }
+            }
+            catch (Exception ex)
+            {
+                result.Message = ex.Message;
+            }
+            return result;
+        }
+
+        public async Task<ResultDto<ShowRoomViewerDto>> GetList()
+        {
+            var result = new ResultDto<ShowRoomViewerDto>();
+            try
+            {
+                var dataList = await _liveShowDB.ShowRoomViewer.AsNoTracking().ToListAsync();
+                var dtoList = _mapper.Map<List<ShowRoomViewerDto>>(dataList);
+                result.ActionResult = true;
+                result.Message = "Success";
+                result.List = dtoList;
             }
             catch (Exception ex)
             {
