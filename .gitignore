@@ -13,3 +13,5 @@
 /LiveShow.Service/bin/Debug/netcoreapp2.2
 /Web/LiveShow.Web/bin/Debug/netcoreapp2.2
 /.vs/LiveShow/v15
+/LiveShow.Domain/Migrations
+/.vs/LiveShow/DesignTimeBuild

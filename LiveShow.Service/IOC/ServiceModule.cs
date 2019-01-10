@@ -11,8 +11,10 @@ namespace LiveShow.Service.IOC
     {
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<RoleSvc>().As<IRoleSvc>().InstancePerLifetimeScope();
             builder.RegisterType<UserSvc>().As<IUserSvc>().InstancePerLifetimeScope();
             builder.RegisterType<ShowRoomSvc>().As<IShowRoomSvc>().InstancePerLifetimeScope();
+            builder.RegisterType<ShowRoomViewerSvc>().As<IShowRoomViewerSvc>().InstancePerLifetimeScope();
         }
     }
 }
