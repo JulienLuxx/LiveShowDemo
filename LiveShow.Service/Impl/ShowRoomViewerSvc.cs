@@ -41,7 +41,6 @@ namespace LiveShow.Service.Impl
                 var data = await _liveShowDB.ShowRoomViewer.Where(x => x.UserId == dto.UserId).FirstOrDefaultAsync();
                 if (null == data)
                 {
-                    //if (!await _liveShowDB.ShowRoomViewer.AsNoTracking().Where(x => x.UserId == dto.UserId && x.ShowRoomId == dto.ShowRoomId).AnyAsync())
                     _liveShowDB.ShowRoomViewer.Add(new ShowRoomVlewer()
                     {
                         ShowRoomId = dto.ShowRoomId,
@@ -56,15 +55,10 @@ namespace LiveShow.Service.Impl
                         ShowRoomId = dto.ShowRoomId,
                         UserId = dto.UserId
                     });
-                    //data.ShowRoomId = dto.ShowRoomId;
-                    //_liveShowDB.ShowRoomViewer.Update(data);
                 }
                 var flag = _liveShowDB.SaveChanges();
-                //if (flag > 0)
-                //{
                 result.ActionResult = true;
                 result.Message = "Success";
-                //}
             }
             catch (Exception ex)
             {

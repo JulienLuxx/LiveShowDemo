@@ -6,6 +6,10 @@ namespace LiveShow.Domain.Entitis
 {
     public class ShowRoomVlewer
     {
+        public ShowRoomVlewer()
+        {
+            CreateTime = DateTime.Now;
+        }
         //public int Id { get; set; }
 
         public DateTime CreateTime { get; set; }
