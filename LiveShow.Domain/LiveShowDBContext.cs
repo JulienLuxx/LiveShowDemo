@@ -19,11 +19,11 @@ namespace LiveShow.Domain
 
         public DbSet<ShowRoomVlewer> ShowRoomViewer { get; set; }
 
-        //public DbSet<MessageCategory> MessageCategory { get; set; }
+        public DbSet<MessageCategory> MessageCategory { get; set; }
 
-        //public DbSet<MessageContent> MessageContent { get; set; }
+        public DbSet<MessageContent> MessageContent { get; set; }
 
-        //public DbSet<Message> Message { get; set; }
+        public DbSet<Message> Message { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -80,31 +80,31 @@ namespace LiveShow.Domain
                 e.Property(x => x.TimeStamp).IsRowVersion();
             });
 
-            //modelBuilder.Entity<MessageCategory>(e =>
-            //{
-            //    e.ToTable("MessageCategory");
-            //    e.HasKey(x => x.Id);
-            //    e.Property(x => x.Id).ValueGeneratedOnAdd();
-            //    e.Property(x => x.TimeStamp).IsRowVersion();
-            //});
+            modelBuilder.Entity<MessageCategory>(e =>
+            {
+                e.ToTable("MessageCategory");
+                e.HasKey(x => x.Id);
+                e.Property(x => x.Id).ValueGeneratedOnAdd();
+                e.Property(x => x.TimeStamp).IsRowVersion();
+            });
 
-            //modelBuilder.Entity<MessageContent>(e => 
-            //{
-            //    e.ToTable("MessageContent");
-            //    e.HasKey(x => x.Id);
-            //    e.Property(x => x.Id).ValueGeneratedOnAdd();
-            //    e.Property(x => x.TimeStamp).IsRowVersion();
-            //    e.HasOne(x => x.MessageCategory).WithMany(y => y.MessageContents).HasForeignKey(x => x.CategoryId);
-            //});
+            modelBuilder.Entity<MessageContent>(e =>
+            {
+                e.ToTable("MessageContent");
+                e.HasKey(x => x.Id);
+                e.Property(x => x.Id).ValueGeneratedOnAdd();
+                e.Property(x => x.TimeStamp).IsRowVersion();
+                e.HasOne(x => x.MessageCategory).WithMany(y => y.MessageContents).HasForeignKey(x => x.CategoryId);
+            });
 
-            //modelBuilder.Entity<Message>(e =>
-            //{
-            //    e.ToTable("Message");
-            //    e.HasKey(x => x.Id);
-            //    e.Property(x => x.Id).ValueGeneratedOnAdd();
-            //    e.Property(x => x.TimeStamp).IsRowVersion();
-            //    e.HasOne(x => x.MessageContent).WithMany(y => y.Messages).HasForeignKey(x => x.ContentId);
-            //});
+            modelBuilder.Entity<Message>(e =>
+            {
+                e.ToTable("Message");
+                e.HasKey(x => x.Id);
+                e.Property(x => x.Id).ValueGeneratedOnAdd();
+                e.Property(x => x.TimeStamp).IsRowVersion();
+                e.HasOne(x => x.MessageContent).WithMany(y => y.Messages).HasForeignKey(x => x.ContentId);
+            });
         }
     }
 }
