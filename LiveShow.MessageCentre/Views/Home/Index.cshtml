@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<input type="text" name="" id="message" class="form-control" value="" required="required" pattern="" title="">
+
+<button type="button" class="btn btn-default" id="send">发送</button>
+
+
+<div id="content"></div>
+
+@section Scripts{
+
+    <script src="~/lib/signalr/signalr.js"></script>
+    <script>
+        const connection=new signalR.HubConnectionBuilder()
+                            .withUrl("/chatHub")
+                            .build();
+
+        connection.on("ReceiveMessage",(use,message)=>{
+            $("#content").append(message+"<br/>");
+        });
+
+        connection.start().catch(err=>{alert(err)});
+
+        $("#send").click(function(){
+            var msg= $("#message").val();
+            connection.invoke("SendMessage","",msg).catch(err=>{alert(err)})
+        });
+
+    </script>
+}
