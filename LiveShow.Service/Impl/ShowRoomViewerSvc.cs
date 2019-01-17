@@ -17,9 +17,8 @@ namespace LiveShow.Service.Impl
     public class ShowRoomViewerSvc : BaseSvc, IShowRoomViewerSvc 
     {
         public ShowRoomViewerSvc(
-            IMapper mapper, 
             LiveShowDBContext liveShowDB
-            ) : base(mapper, liveShowDB)
+            ) : base( liveShowDB)
         {
         }
 
@@ -98,7 +97,7 @@ namespace LiveShow.Service.Impl
             try
             {
                 var dataList = await _liveShowDB.ShowRoomViewer.AsNoTracking().ToListAsync();
-                var dtoList = _mapper.Map<List<ShowRoomViewerDto>>(dataList);
+                var dtoList = Mapper.Map<List<ShowRoomViewerDto>>(dataList);
                 result.ActionResult = true;
                 result.Message = "Success";
                 result.List = dtoList;

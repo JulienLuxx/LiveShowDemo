@@ -11,6 +11,7 @@ namespace LiveShow.Web.Controllers
 {
     [Produces("application/json")]
     [Route("API/Role")]
+    //[ApiExplorerSettings(IgnoreApi = true)]
     public class RoleController : Controller
     {
         private readonly IRoleSvc _roleSvc;

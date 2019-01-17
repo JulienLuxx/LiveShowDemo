@@ -17,9 +17,8 @@ namespace LiveShow.Service.Impl
     public class RoleSvc : BaseSvc, IRoleSvc 
     {
         public RoleSvc(
-            IMapper mapper, 
             LiveShowDBContext liveShowDB
-            ) : base(mapper, liveShowDB)
+            ) : base( liveShowDB)
         {
         }
 
@@ -29,7 +28,7 @@ namespace LiveShow.Service.Impl
             try
             {
                 dto.SetDefaultValue();
-                var data = _mapper.Map<Role>(dto);
+                var data = Mapper.Map<Role>(dto);
                 _liveShowDB.Add(data);
                 var flag = _liveShowDB.SaveChanges();
                 if (flag > 0)
@@ -102,7 +101,7 @@ namespace LiveShow.Service.Impl
                 var data = await _liveShowDB.Role.AsNoTracking().Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync();
                 if (null != data)
                 {
-                    var dto = _mapper.Map<RoleDto>(data);
+                    var dto = Mapper.Map<RoleDto>(data);
                     result.ActionResult = true;
                     result.Message = "Success";
                     result.Data = dto;

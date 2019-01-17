@@ -15,6 +15,8 @@ namespace LiveShow.Service.IOC
             builder.RegisterType<UserSvc>().As<IUserSvc>().InstancePerLifetimeScope();
             builder.RegisterType<ShowRoomSvc>().As<IShowRoomSvc>().InstancePerLifetimeScope();
             builder.RegisterType<ShowRoomViewerSvc>().As<IShowRoomViewerSvc>().InstancePerLifetimeScope();
+
+            builder.RegisterType<MessageCategorySvc>().As<IMessageCategorySvc>().InstancePerLifetimeScope();
         }
     }
 }

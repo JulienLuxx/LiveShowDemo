@@ -18,9 +18,8 @@ namespace LiveShow.Service.Impl
     public class ShowRoomSvc : BaseSvc, IShowRoomSvc 
     {
         public ShowRoomSvc(
-            IMapper mapper, 
             LiveShowDBContext liveShowDB
-            ) : base(mapper, liveShowDB)
+            ) : base( liveShowDB)
         {
         }
 
@@ -30,7 +29,7 @@ namespace LiveShow.Service.Impl
             try
             {
                 dto.SetDefaultValue();
-                var data = _mapper.Map<ShowRoom>(dto);
+                var data = Mapper.Map<ShowRoom>(dto);
                 data.Disable();
                 _liveShowDB.Add(data);
                 var flag = _liveShowDB.SaveChanges();
@@ -180,7 +179,7 @@ namespace LiveShow.Service.Impl
             try
             {
                 var data = await _liveShowDB.ShowRoom.Include(x => x.ShowRoomVlewers).Where(x => !x.IsDeleted && x.ShowRoomVlewers.Where(y => y.UserId == userId).Any()).FirstOrDefaultAsync();
-                var dto = _mapper.Map<ShowRoomDto>(data);
+                var dto = Mapper.Map<ShowRoomDto>(data);
                 result.ActionResult = true;
                 result.Message = "Success";
                 result.Data = dto;

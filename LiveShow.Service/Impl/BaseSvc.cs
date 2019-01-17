@@ -9,12 +9,10 @@ namespace LiveShow.Service.Impl
 {
     public abstract class BaseSvc
     {
-        protected readonly IMapper _mapper;
         protected LiveShowDBContext _liveShowDB { get; set; }
 
-        protected BaseSvc(IMapper mapper, LiveShowDBContext liveShowDB)
+        protected BaseSvc(LiveShowDBContext liveShowDB)
         {
-            _mapper = mapper;
             _liveShowDB = liveShowDB;
         }
 

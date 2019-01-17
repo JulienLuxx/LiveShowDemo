@@ -18,10 +18,9 @@ namespace LiveShow.Service.Impl
     {
         private IEncryptUtil _encryptUtil { get; set; }
         public UserSvc(
-            IMapper mapper, 
             LiveShowDBContext liveShowDB,
             IEncryptUtil encryptUtil
-            ) : base(mapper, liveShowDB)
+            ) : base( liveShowDB)
         {
             _encryptUtil = encryptUtil;
         }
@@ -34,7 +33,7 @@ namespace LiveShow.Service.Impl
                 dto.SetDefaultValue();
                 var randomStr = new Random().Next(100000).ToString();
                 dto.Password = _encryptUtil.GetMd5By32(dto.Password + randomStr);
-                var data = _mapper.Map<User>(dto);
+                var data = Mapper.Map<User>(dto);
                 data.SaltValue = randomStr;
                 _liveShowDB.Add(data);
                 var flag = _liveShowDB.SaveChanges();
@@ -154,7 +153,7 @@ namespace LiveShow.Service.Impl
                     return result;
                 }
                 dto.RoleId =await _liveShowDB.Role.Where(x => !x.IsDeleted && x.Name.Equals("user")).Select(s => s.Id).FirstOrDefaultAsync();
-                var userDto = _mapper.Map<UserDto>(dto);
+                var userDto = Mapper.Map<UserDto>(dto);
                 result = Add(userDto);
             }
             catch (Exception ex)

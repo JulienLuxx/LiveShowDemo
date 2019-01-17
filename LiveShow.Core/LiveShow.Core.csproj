@@ -9,8 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Attributes\SwaggerIgnoreAttribute.cs" />
+    <Compile Remove="Filter\SwaggerIgnoreFilter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Attributes\" />
     <Folder Include="Dto\" />
     <Folder Include="Encrypt\" />
+    <Folder Include="Filter\" />
   </ItemGroup>
 
   <ItemGroup>
