@@ -1,18 +1,12 @@
-﻿using System;
+﻿using LiveShow.Core.Dto;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LiveShow.Domain.Entitis
+namespace LiveShow.Service.Dto
 {
-    public class MessageContent
+    public class MessageContentDto:BaseDto
     {
-        public MessageContent()
-        {
-            Messages = new HashSet<Message>();
-        }
-
-        public int Id { get; set; }
-
         public int CategoryId { get; set; }
 
         public string Title { get; set; }
@@ -32,15 +26,10 @@ namespace LiveShow.Domain.Entitis
         public int Status { get; set; }
 
         public string ErrorMessage { get; set; }
+    }
 
-        public bool IsDeleted { get; set; }
-
-        public DateTime CreateTime { get; set; }
-
-        public byte[] TimeStamp { get; set; }
-
-        public virtual MessageCategory MessageCategory { get; set; }
-
-        public virtual ICollection<Message> Messages { get; set; }
+    public class MessageContentAddDto:MessageContentDto
+    {
+        public List<MessageDto> Messages { get; set; }
     }
 }

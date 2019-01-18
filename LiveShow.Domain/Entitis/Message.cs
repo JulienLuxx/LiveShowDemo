@@ -18,6 +18,8 @@ namespace LiveShow.Domain.Entitis
 
         public bool IsDeleted { get; set; }
 
+        public DateTime CreateTime { get; set; }
+
         public byte[] TimeStamp { get; set; }
 
         public virtual MessageContent MessageContent { get; set; }

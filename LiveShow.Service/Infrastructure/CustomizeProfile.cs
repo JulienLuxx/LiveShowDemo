@@ -21,6 +21,12 @@ namespace LiveShow.Service.Infrastructure
             CreateMap<UserDto, User>();
             CreateMap<UserDto, RegisterDto>();
             CreateMap<RegisterDto, UserDto>();
+
+            CreateMap<MessageCategory, MessageCategoryDto>();
+            CreateMap<MessageCategoryDto, MessageCategory>();
+
+            CreateMap<MessageContentAddDto, MessageContent>();
+
         }
     }
 }
