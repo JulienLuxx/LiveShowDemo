@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{B8C239BD-4EB
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiveShow.MessageCenter", "Web\LiveShow.MessageCentre\LiveShow.MessageCenter.csproj", "{7C722857-D000-4FEC-A766-A15A0D759480}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{5029929A-E6CA-49B0-AFD5-44424A5806E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveShow.XUnitTest", "UnitTest\LiveShow.XUnitTest\LiveShow.XUnitTest.csproj", "{0646F52D-48A2-4A5F-B65F-416AF0042A23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +45,10 @@ Global
 		{7C722857-D000-4FEC-A766-A15A0D759480}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C722857-D000-4FEC-A766-A15A0D759480}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C722857-D000-4FEC-A766-A15A0D759480}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0646F52D-48A2-4A5F-B65F-416AF0042A23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0646F52D-48A2-4A5F-B65F-416AF0042A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0646F52D-48A2-4A5F-B65F-416AF0042A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0646F52D-48A2-4A5F-B65F-416AF0042A23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +56,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{68413BEB-EA62-46DD-9428-F8CD808E5492} = {B8C239BD-4EBC-4E6A-8E80-C71B4D60CCF7}
 		{7C722857-D000-4FEC-A766-A15A0D759480} = {B8C239BD-4EBC-4E6A-8E80-C71B4D60CCF7}
+		{0646F52D-48A2-4A5F-B65F-416AF0042A23} = {5029929A-E6CA-49B0-AFD5-44424A5806E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C72AC704-6C16-4393-8F03-37A34B133B2D}

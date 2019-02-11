@@ -19,3 +19,5 @@
 /LiveShow.MessageCentre/obj
 /Web/LiveShow.MessageCentre/bin/Debug/netcoreapp2.2
 /Web/LiveShow.MessageCentre/obj
+/UnitTest/LiveShow.XUnitTest/obj/Debug/netcoreapp2.2
+/UnitTest/LiveShow.XUnitTest/obj
