@@ -17,6 +17,13 @@ namespace LiveShow.XUnitTest
 {
     public class ShowRoomUnitTest
     {
+        private List<ShowRoom> _sampleList;
+        public ShowRoomUnitTest()
+        {
+            _sampleList = new List<ShowRoom>()
+            {
+            };
+        }
         [Fact]
         public void AddTest()
         {
@@ -36,10 +43,6 @@ namespace LiveShow.XUnitTest
         [Fact]
         public async Task GetPageDataTest()
         {
-            var list = new List<ShowRoom>()
-            {
-                new ShowRoom() { Id=1,Name="Test" }
-            };
         }
     }
 }
