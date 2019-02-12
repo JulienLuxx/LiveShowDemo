@@ -11,19 +11,19 @@ namespace LiveShow.Domain
     {
         public LiveShowDBContext() { }
 
-        public DbSet<User> User { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
-        public DbSet<Role> Role { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
 
-        public DbSet<ShowRoom> ShowRoom { get; set; }
+        public virtual DbSet<ShowRoom> ShowRoom { get; set; }
 
-        public DbSet<ShowRoomVlewer> ShowRoomViewer { get; set; }
+        public virtual DbSet<ShowRoomVlewer> ShowRoomViewer { get; set; }
 
-        public DbSet<MessageCategory> MessageCategory { get; set; }
+        public virtual DbSet<MessageCategory> MessageCategory { get; set; }
 
-        public DbSet<MessageContent> MessageContent { get; set; }
+        public virtual DbSet<MessageContent> MessageContent { get; set; }
 
-        public DbSet<Message> Message { get; set; }
+        public virtual DbSet<Message> Message { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
