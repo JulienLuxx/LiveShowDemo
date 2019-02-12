@@ -18,8 +18,15 @@ namespace LiveShow.XUnitTest
 {
     public class RoleUnitTest
     {
+        private List<Role> _sampleList;
+        private RoleDto _sampleDto; 
         public RoleUnitTest()
         {
+            _sampleList= new List<Role>()
+            {
+                new Role(){ Id=1,Name="Test1",CreateTime=DateTime.Now,IsDeleted=false,Status=0 },
+                new Role(){ Id=2,Name="Test2",CreateTime=DateTime.Now,IsDeleted=false,Status=0 }
+            };
             //Mapper.Initialize(x => x.AddProfile<CustomizeProfile>());
         }
 
@@ -30,9 +37,9 @@ namespace LiveShow.XUnitTest
             var mockSet = new Mock<DbSet<Role>>();
             var mockContext = new Mock<LiveShowDBContext>();
             mockContext.Setup(x => x.Role).Returns(mockSet.Object);
-
             var mockSvc = new RoleSvc(mockContext.Object);
-            var dto = new RoleDto() { Name = "test", IsDeleted = false, CreateTime = DateTime.Now, Status = 1 };
+
+            var dto = new RoleDto() { Name = "Test", IsDeleted = false, CreateTime = DateTime.Now, Status = 1 };
             mockSvc.Add(dto);
 
             mockContext.Verify(x => x.Add(It.IsAny<Role>()), Times.Once());
@@ -42,12 +49,7 @@ namespace LiveShow.XUnitTest
         [Fact]
         public async Task EditTest()
         {
-            var list = new List<Role>()
-            {
-                new Role(){ Id=1,Name="Test1",CreateTime=DateTime.Now,IsDeleted=false,Status=0 },
-                new Role(){ Id=2,Name="Test2",CreateTime=DateTime.Now,IsDeleted=false,Status=0 }
-            };
-            var mockSet = new Mock<DbSet<Role>>().SetupList(list);
+            var mockSet = new Mock<DbSet<Role>>().SetupList(_sampleList);
             var mockContext = new Mock<LiveShowDBContext>();
             mockContext.Setup(x => x.Role).Returns(mockSet.Object);
             var mockSvc = new RoleSvc(mockContext.Object);
@@ -61,12 +63,7 @@ namespace LiveShow.XUnitTest
         [Fact]
         public async Task GetPageDataTest()
         {
-            var list = new List<Role>()
-            {
-                new Role(){ Id=1,Name="Test1",CreateTime=DateTime.Now,IsDeleted=false,Status=0 },
-                new Role(){ Id=2,Name="Test2",CreateTime=DateTime.Now,IsDeleted=false,Status=0 }
-            };
-            var mockSet = new Mock<DbSet<Role>>().SetupList(list);
+            var mockSet = new Mock<DbSet<Role>>().SetupList(_sampleList);
             var mockContext = new Mock<LiveShowDBContext>();
             mockContext.Setup(x => x.Role).Returns(mockSet.Object);
             var mockSvc = new RoleSvc(mockContext.Object);
@@ -78,12 +75,7 @@ namespace LiveShow.XUnitTest
         public async Task GetSingleDataTest()
         {
             Mapper.Initialize(x => x.AddProfile<CustomizeProfile>());
-            var list = new List<Role>()
-            {
-                new Role(){ Id=1,Name="Test1",CreateTime=DateTime.Now,IsDeleted=false,Status=0 },
-                new Role(){ Id=2,Name="Test2",CreateTime=DateTime.Now,IsDeleted=false,Status=0 }
-            };
-            var mockSet = new Mock<DbSet<Role>>().SetupList(list);
+            var mockSet = new Mock<DbSet<Role>>().SetupList(_sampleList);
             var mockContext = new Mock<LiveShowDBContext>();
             mockContext.Setup(x => x.Role).Returns(mockSet.Object);
             var mockSvc = new RoleSvc(mockContext.Object);
