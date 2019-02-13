@@ -37,7 +37,7 @@ namespace LiveShow.Service.Impl
                 {
                     return result;
                 }
-                if (await _liveShowDB.ShowRoom.AsNoTracking().Include(x => x.ShowRoomVlewers).Where(x => x.ShowRoomVlewers.Count >= 10000 && x.Id == dto.ShowRoomId).AnyAsync())
+                if (await _liveShowDB.ShowRoom.AsNoTracking().Include(x => x.ShowRoomVlewers).Where(x => x.ShowRoomVlewers.Count >= 10000 &&!x.ShowRoomVlewers.Where(y=>y.UserId==dto.UserId).Any()&& x.Id == dto.ShowRoomId).AnyAsync())
                 {
                     result.Message = "Over Size";
                     return result;
@@ -51,7 +51,12 @@ namespace LiveShow.Service.Impl
                         UserId = dto.UserId
                     });
                 }
-                else if (data.ShowRoomId != dto.ShowRoomId) 
+                else if (data.ShowRoomId == dto.ShowRoomId)
+                {
+                    result.ActionResult = true;
+                    result.Message = "Already in the room";
+                }
+                else if (data.ShowRoomId != dto.ShowRoomId)
                 {
                     _liveShowDB.Remove(data);
                     _liveShowDB.ShowRoomViewer.Add(new ShowRoomVlewer()
