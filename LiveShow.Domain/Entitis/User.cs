@@ -8,7 +8,7 @@ namespace LiveShow.Domain.Entitis
     {
         public User()
         {
-            ShowRoomVlewers = new HashSet<ShowRoomVlewer>();
+            ShowRoomVlewers = new HashSet<ShowRoomViewer>();
         }
         public int Id { get; set; }
 
@@ -36,6 +36,6 @@ namespace LiveShow.Domain.Entitis
 
         public virtual Role Role { get; set; }
 
-        public virtual ICollection<ShowRoomVlewer> ShowRoomVlewers { get; set; }
+        public virtual ICollection<ShowRoomViewer> ShowRoomVlewers { get; set; }
     }
 }

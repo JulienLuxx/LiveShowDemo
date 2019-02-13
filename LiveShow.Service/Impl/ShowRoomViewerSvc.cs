@@ -45,7 +45,7 @@ namespace LiveShow.Service.Impl
                 var data = await _liveShowDB.ShowRoomViewer.Where(x => x.UserId == dto.UserId).FirstOrDefaultAsync();
                 if (null == data)
                 {
-                    _liveShowDB.ShowRoomViewer.Add(new ShowRoomVlewer()
+                    _liveShowDB.ShowRoomViewer.Add(new ShowRoomViewer()
                     {
                         ShowRoomId = dto.ShowRoomId,
                         UserId = dto.UserId
@@ -59,7 +59,7 @@ namespace LiveShow.Service.Impl
                 else if (data.ShowRoomId != dto.ShowRoomId)
                 {
                     _liveShowDB.Remove(data);
-                    _liveShowDB.ShowRoomViewer.Add(new ShowRoomVlewer()
+                    _liveShowDB.ShowRoomViewer.Add(new ShowRoomViewer()
                     {
                         ShowRoomId = dto.ShowRoomId,
                         UserId = dto.UserId

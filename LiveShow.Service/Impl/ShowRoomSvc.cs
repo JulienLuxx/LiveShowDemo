@@ -64,7 +64,7 @@ namespace LiveShow.Service.Impl
                 if (null==viewerData)
                 {
                     if(await _liveShowDB.ShowRoomViewer.AsNoTracking().Where(x=>x.UserId==dto.UserId&&x.ShowRoomId==dto.ShowRoomId).AnyAsync())
-                    _liveShowDB.ShowRoomViewer.Add(new ShowRoomVlewer()
+                    _liveShowDB.ShowRoomViewer.Add(new ShowRoomViewer()
                     {
                         ShowRoomId = dto.ShowRoomId,
                         UserId = dto.UserId

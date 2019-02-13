@@ -25,9 +25,9 @@ namespace LiveShow.XUnitTest
         {
             _sampleList = new List<ShowRoom>()
             {
-                new ShowRoom() { Id=1,Name="Test1",IsDeleted=false,CreateTime=DateTime.Now,LastActivateTime=DateTime.Now,Status=ShowRoomStatusEnum.Default.GetHashCode(),Title="Test1Title",ShowRoomVlewers=new List<ShowRoomVlewer>(){ new ShowRoomVlewer() { UserId=1,ShowRoomId=1,CreateTime=DateTime.Now} } },
-                new ShowRoom() { Id=2,Name="Test2",IsDeleted=false,CreateTime=DateTime.Now,LastActivateTime=DateTime.Now,Status=ShowRoomStatusEnum.Default.GetHashCode(),Title="Test2Title",ShowRoomVlewers=new List<ShowRoomVlewer>(){ new ShowRoomVlewer() { UserId=2,ShowRoomId=2,CreateTime=DateTime.Now} }  },
-                new ShowRoom() { Id=3,Name="Test3",IsDeleted=false,CreateTime=DateTime.Now,LastActivateTime=DateTime.Now,Status=ShowRoomStatusEnum.Activate.GetHashCode(),Title="Test3Title",ShowRoomVlewers=new List<ShowRoomVlewer>(){ new ShowRoomVlewer() { UserId=3,ShowRoomId=3,CreateTime=DateTime.Now} }  },
+                new ShowRoom() { Id=1,Name="Test1",IsDeleted=false,CreateTime=DateTime.Now,LastActivateTime=DateTime.Now,Status=ShowRoomStatusEnum.Default.GetHashCode(),Title="Test1Title",ShowRoomVlewers=new List<ShowRoomViewer>(){ new ShowRoomViewer() { UserId=1,ShowRoomId=1,CreateTime=DateTime.Now} } },
+                new ShowRoom() { Id=2,Name="Test2",IsDeleted=false,CreateTime=DateTime.Now,LastActivateTime=DateTime.Now,Status=ShowRoomStatusEnum.Default.GetHashCode(),Title="Test2Title",ShowRoomVlewers=new List<ShowRoomViewer>(){ new ShowRoomViewer() { UserId=2,ShowRoomId=2,CreateTime=DateTime.Now} }  },
+                new ShowRoom() { Id=3,Name="Test3",IsDeleted=false,CreateTime=DateTime.Now,LastActivateTime=DateTime.Now,Status=ShowRoomStatusEnum.Activate.GetHashCode(),Title="Test3Title",ShowRoomVlewers=new List<ShowRoomViewer>(){ new ShowRoomViewer() { UserId=3,ShowRoomId=3,CreateTime=DateTime.Now} }  },
                 new ShowRoom() { Id=4,Name="Test4",IsDeleted=false,CreateTime=DateTime.Now,LastActivateTime=DateTime.Now,Status=ShowRoomStatusEnum.Disable.GetHashCode(),Title="Test4Title"/*,ShowRoomVlewers=new List<ShowRoomVlewer>(){ new ShowRoomVlewer() { UserId=4,ShowRoomId=4,CreateTime=DateTime.Now} } */ }
             };
         }

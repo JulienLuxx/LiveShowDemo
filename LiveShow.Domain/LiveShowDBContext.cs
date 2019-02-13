@@ -17,7 +17,7 @@ namespace LiveShow.Domain
 
         public virtual DbSet<ShowRoom> ShowRoom { get; set; }
 
-        public virtual DbSet<ShowRoomVlewer> ShowRoomViewer { get; set; }
+        public virtual DbSet<ShowRoomViewer> ShowRoomViewer { get; set; }
 
         public virtual DbSet<MessageCategory> MessageCategory { get; set; }
 
@@ -63,7 +63,7 @@ namespace LiveShow.Domain
                 e.Property(x => x.TimeStamp).IsRowVersion();
             });
 
-            modelBuilder.Entity<ShowRoomVlewer>(e =>
+            modelBuilder.Entity<ShowRoomViewer>(e =>
             {
                 e.ToTable("ShowRoomVlewer");
                 //e.HasKey(x => x.Id);
