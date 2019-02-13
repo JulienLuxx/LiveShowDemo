@@ -22,6 +22,11 @@ namespace LiveShow.Service.Impl
         {
         }
 
+        /// <summary>
+        /// 进入房间
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         public async Task<ResultDto> Add(ShowRoomViewerDto dto)
         {
             var result = new ResultDto();
@@ -66,6 +71,11 @@ namespace LiveShow.Service.Impl
             return result;
         }
 
+        /// <summary>
+        /// 离开房间
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         public async Task<ResultDto> Remove(ShowRoomViewerDto dto)
         {
             var result = new ResultDto();

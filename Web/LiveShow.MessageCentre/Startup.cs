@@ -84,6 +84,7 @@ namespace LiveShow.MessageCenter
                        .AllowCredentials();
             }));
 
+            ///注册SignalR和Redis
             services.AddSignalR(option => option.EnableDetailedErrors = true)
                 .AddMessagePackProtocol()
                 .AddStackExchangeRedis(o =>

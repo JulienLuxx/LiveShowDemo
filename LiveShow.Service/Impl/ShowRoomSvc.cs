@@ -151,7 +151,7 @@ namespace LiveShow.Service.Impl
         }
 
         /// <summary>
-        /// 获取页面数据
+        /// 获取页面列表数据
         /// </summary>
         /// <param name="qModel"></param>
         /// <returns></returns>

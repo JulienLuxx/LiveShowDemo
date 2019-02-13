@@ -67,6 +67,11 @@ namespace LiveShow.Service.Impl
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="qModel"></param>
+        /// <returns></returns>
         public async Task<ResultDto<RoleDto>> GetPageDataAsync(RoleQueryModel qModel)
         {
             var result = new ResultDto<RoleDto>();
