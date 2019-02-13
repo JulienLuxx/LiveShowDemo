@@ -114,6 +114,11 @@ namespace LiveShow.Service.Impl
             return result;
         }
 
+        /// <summary>
+        /// 启用房间
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<ResultDto> Activate(int id)
         {
             var result = new ResultDto();
@@ -145,6 +150,11 @@ namespace LiveShow.Service.Impl
             return result;
         }
 
+        /// <summary>
+        /// 获取页面数据
+        /// </summary>
+        /// <param name="qModel"></param>
+        /// <returns></returns>
         public async Task<ResultDto<ShowRoomDto>> GetPageDataAsync(ShowRoomQueryModel qModel)
         {
             var result = new ResultDto<ShowRoomDto>();
@@ -173,6 +183,11 @@ namespace LiveShow.Service.Impl
             return result;
         }
 
+        /// <summary>
+        /// 根据用户编号取单条数据
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task<ResultDto<ShowRoomDto>> GetSingleDataByUserIdAsync(int userId)
         {
             var result = new ResultDto<ShowRoomDto>();
@@ -191,6 +206,11 @@ namespace LiveShow.Service.Impl
             return result;
         }
 
+        /// <summary>
+        /// 关闭房间
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<ResultDto> Shutdown(int id)
         {
             var result = new ResultDto();
