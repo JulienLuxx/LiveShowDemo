@@ -33,7 +33,7 @@ namespace LiveShow.Service.Impl
             dto.CreateTime = DateTime.Now;
             try
             {
-                if (await _liveShowDB.ShowRoom.AsNoTracking().Where(x => (x.IsDeleted || (x.Status == ShowRoomStatusEnum.Ban.GetHashCode() || x.Status == ShowRoomStatusEnum.Disable.GetHashCode())) && x.Id == dto.UserId).AnyAsync())
+                if (await _liveShowDB.ShowRoom.AsNoTracking().Where(x => (x.IsDeleted || (x.Status == ShowRoomStatusEnum.Ban.GetHashCode() || x.Status == ShowRoomStatusEnum.Disable.GetHashCode())) && x. Id== dto.ShowRoomId).AnyAsync())
                 {
                     return result;
                 }
