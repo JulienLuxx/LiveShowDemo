@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LiveShow.Web.Controllers
 {
+    /// <summary>
+    /// 房间管理
+    /// </summary>
     [Produces("application/json")]
     [Route("API/ShowRoom")]
     public class ShowRoomController : Controller
@@ -19,6 +22,11 @@ namespace LiveShow.Web.Controllers
             _showRoomSvc = showRoomSvc;
         }
 
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost("Add")]
         public JsonResult Add(ShowRoomDto dto)
         {
@@ -26,6 +34,11 @@ namespace LiveShow.Web.Controllers
             return Json(result);
         }
 
+        /// <summary>
+        /// 启用
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost("Activate")]
         public async Task<JsonResult> Activate(int id)
         {
@@ -33,6 +46,11 @@ namespace LiveShow.Web.Controllers
             return Json(await resultTask);
         }
 
+        /// <summary>
+        /// 获取页面列表
+        /// </summary>
+        /// <param name="qModel"></param>
+        /// <returns></returns>
         [HttpGet("Page")]
         public async Task<JsonResult> GetPageAsync(ShowRoomQueryModel qModel)
         {
@@ -40,6 +58,11 @@ namespace LiveShow.Web.Controllers
             return Json(await resultTask);
         }
 
+        /// <summary>
+        /// 根据用户编号获取详情
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         [HttpGet("DetailByUser")]
         public async Task<JsonResult> GetDetailByUserId(int userId)
         {
@@ -47,6 +70,11 @@ namespace LiveShow.Web.Controllers
             return Json(await resultTask);
         }
 
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost("Shutdown")]
         public async Task<JsonResult> Shutdown(int id)
         {
