@@ -68,7 +68,7 @@ namespace LiveShow.XUnitTest
             mockContext.Setup(x => x.Role).Returns(mockSet.Object);
             var mockSvc = new RoleSvc(mockContext.Object);
             var result = await mockSvc.GetPageDataAsync(new RoleQueryModel());
-            Assert.Equal(2, result.List.Count());
+            Assert.Equal(_sampleList.Count(), result.List.Count());
         }
 
         [Fact]
